@@ -1,0 +1,24 @@
+{
+  "name": "simple-calculator",
+  "version": "1.0.0",
+  "description": "A simple calculator project bundled with Webpack",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "serve": "http-server dist"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0",
+    "css-loader": "^5.2.7",
+    "html-webpack-plugin": "^5.6.0",
+    "http-server": "^14.1.1",
+    "mini-css-extract-plugin": "^2.9.0",
+    "style-loader": "^3.3.4",
+    "terser-webpack-plugin": "^5.3.3",
+    "webpack": "^5.91.0",
+    "webpack-bundle-analyzer": "^4.10.2",
+    "webpack-cli": "^4.10.0"
+  }
+}
