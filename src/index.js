@@ -23,14 +23,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 operationDisplay.textContent += value;
             } else if (button.classList.contains('control')) {
                 if (value === 'C') {
-                    currentInput = '';
-                    operator = '';
-                    firstOperand = null;
-                    operationDisplay.textContent = '';
-                    resultDisplay.textContent = '';
+                    resetCalculator();
                 } else if (value === '=') {
                     if (firstOperand !== null && operator && currentInput !== '') {
-                        const result = calculate(firstOperand, parseFloat(currentInput), operator);
+                        const result = performOperation(firstOperand, parseFloat(currentInput), operator);
                         resultDisplay.textContent = result;
                         operationDisplay.textContent += ` ${value} ${result}`;
                         currentInput = result.toString();
@@ -43,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (firstOperand === null) {
                     firstOperand = parseFloat(currentInput);
                 } else if (operator && currentInput !== '') {
-                    firstOperand = calculate(firstOperand, parseFloat(currentInput), operator);
+                    firstOperand = performOperation(firstOperand, parseFloat(currentInput), operator);
                 }
                 operator = value;
                 currentInput = '';
@@ -52,18 +48,37 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    function calculate(a, b, operator) {
+    function performOperation(a, b, operator) {
         switch (operator) {
-            case '+': return a + b;
-            case '-': return a - b;
-            case '*': return a * b;
-            case '/': return a / b;
+            case '+': return add(a, b);
+            case '-': return subtract(a, b);
+            case '*': return multiply(a, b);
+            case '/': return divide(a, b);
             default: return b;
         }
     }
 
-    // Dummy unused function
-    function unusedFunction() {
-        console.log('This is an unused function');
+    function add(a, b) {
+        return a + b;
+    }
+
+    function subtract(a, b) {
+        return a - b;
+    }
+
+    function multiply(a, b) {
+        return a * b;
+    }
+
+    function divide(a, b) {
+        return a / b;
+    }
+
+    function resetCalculator() {
+        currentInput = '';
+        operator = '';
+        firstOperand = null;
+        operationDisplay.textContent = '';
+        resultDisplay.textContent = '';
     }
 });
